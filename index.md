@@ -1,42 +1,23 @@
-# Lab Report 1
-## `cd` command examples
+# Lab Report 2
+## Part 1
+![Image](lab2ss1.png)
 
-![Image](cd1.png)
+The main method in StringServer.java is called, which in turn calls the start method of the Server.java file. In Server.java, the start method calls create and createContext. The handleRequest method is called when we refresh the url with the new query request. 
 
-We get this output because we used cd from the directory home/lecture1/messages. When using cd with no arguments, we navigate automatically to the root directory. This is not an error.
+The main method takes in a single argument: the port number. After the port number is given it is passed into the start method with an addition Handler object. The handleRequest method takes in a URI object called url which has fields for path and query. We also have the classes ServerHttpHandler and URLHandler that have handleRequest and the handle method, which takes in HttpExhange variable. In the Handler class, we have num and queries, which keep track of the running query string to add-message and the number of times it was called. 
 
-![Image](cd2.png)
+How do the values of any relevant fields of the class change from this specific request? If no values got changed, explain why.
 
-We used cd with the argument as a directory. Because we were located at the home directory and cd into the directory lecture1/messages, we change directories on our next command. This is not an error.
+No values are changed except num, queries, and the URI, as these are being updated every time we make a new query. The port remains the same because we are not changing the address, and everything else will be associated with it as long as we run the server.
 
-![Image](cd3.png)
+![Image](lab2ss2.png)
 
-Using cd to change into a file en-us.txt from the working directory lecture1/messages does not work. cd can only be used to change directories, not files. This is an error.
+For this screenshot, only handleRequest and handle are called because we already called the other methods to start the server. Now, we only have to handle alterations to the URL. 
 
-## `ls` command examples
+The values for num and query have changed accordingly, but nothing else is updated.
 
-![Image](ls1.png)
+##Part 2
 
-We get this output because we are currently located in home/lecture1/messages. So ls displays the files in the current working directory. This is not an error. 
- 
-![Image](ls2.png)
 
-We get this output because we gave ls an argument for which directory we should print the files for. This is not an error.
 
-![Image](ls3.png)
 
-We get this output because we have already navigated to the lowest level possible in our directory using lecture1/Hello.java. ls simply prints the absolute path to the directory. This is not an error.
-
-## `cat` command examples
-
-![Image](cat1.png)
-
-We are located in the home directory and using cat with no command means that it will wait for an argument or some sort of keyboard input. We see empty lines as a result until I use CTRL+C to exit the command line. This is not an error.
-
-![Image](cat2.png)
-
-We are located in the home directory and want to show the contents of the argument we use. We cannot print the contents of directory so we are told that we are using cat on a directory. This is not an error.
-
-![Image](cat3.png)
-
-We are located in the home directory and we are using cat to display the contents of en-us.txt. The result is Hello World! which is contained in en-us.txt. This is not an error. 
