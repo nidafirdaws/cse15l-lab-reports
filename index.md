@@ -16,13 +16,13 @@ For this screenshot, only handleRequest and handle are called because we already
 
 The values for num and query have changed accordingly, but nothing else is updated.
 
-##Part 2
+## Part 2
 
 ![Image](privatekeylab2.png)
 ![Image](publickeylab2.png)
 ![Image](nopasswordlab2.png)
 
-##Part 3
+## Part 3
 
 I learned how to set up a remote server in Week 2. I also learned about different parts of a URL and what they mean when they are changed or altered. I learned how to set up a VSCode terminal using git as well. 
 
