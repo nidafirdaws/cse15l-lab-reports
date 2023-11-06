@@ -133,10 +133,10 @@ The files containing the specific pattern (case-sensitive) are printed out onto 
 7. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
-$ find . -type f | wc -l
-1426
+$ find technical/biomed  -maxdepth 1 -type f | wc -l
+837
 ```
-This is useful because it allows us to look at the total number of files in our directory.
+This is useful because it allows us to look at the total number of files in the biomed directory specifically. 
 8. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
@@ -145,3 +145,43 @@ $ find technical/911report  -maxdepth 1 -type f | wc -l
 ```
 This is useful because it allows us to look at the total number of files under a specific directory. 
 
+For 6-8, I asked ChatGPT the following questions:
+
+Prompt: 'How can I use 'maxdepth' with the find command?
+
+ChatGPT responded with the following: 
+
+The find command in Bash is used to search for files and directories within a specified directory hierarchy. The -maxdepth option allows you to limit the depth of the search. This means you can specify how many levels of subdirectories you want find to search within.
+
+Here's the syntax for using find with the -maxdepth option:
+
+bash
+```find /path/to/search -maxdepth N <other options> -type <f or d> -name "<pattern>"```
+Explanation:
+
+/path/to/search: This is the directory where you want to start the search.
+-maxdepth N: This option limits the depth of the search to N levels of directories. For example, if you use -maxdepth 2, find will search for files and directories up to 2 levels deep from the starting directory.
+<other options>: These are additional options you can use with the find command.
+-type <f or d>: This option allows you to specify whether you're looking for files (-type f) or directories (-type d).
+-name "<pattern>": This option allows you to search for files or directories with a specific name pattern.
+
+Prompt: 
+How can I use exec with the find command to find files containing a word?
+
+ChatGPT responded with:
+You can use the find command in combination with exec to search for files containing a specific word. The exec option allows you to execute a command on the files found by find. In this case, you can use a command like grep to search for a specific word within those files.
+
+Here's an example of how you can do it:
+```find /path/to/search -type f -exec grep -l 'word_to_search' {} + ```
+Explanation:
+
+/path/to/search: This is the directory where you want to start the search.
+-type f: This option specifies that you're only interested in regular files (not directories or other types of files).
+-exec command {} +: This tells find to execute the specified command (in this case, grep) on the files it finds. The {} is a placeholder for the list of files found, and + indicates that as many files as possible should be passed to each invocation of the command.
+
+I changed the examples to look for a specific pattern ('bird') in the directories under technical. The first example I changed to look for a maxdepth of 1 in a specific directory under technical. 
+
+```$ find technical/911report -type f -exec grep -l 'BIRD' {} \;```
+```$ find technical/biomed  -type f -exec grep -l 'bird' {} \;```
+```$ find technical/911report  -maxdepth 1 -type f | wc -l```
+```$ find technical/biomed  -maxdepth 1 -type f | wc -l```
