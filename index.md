@@ -55,6 +55,7 @@ The reversed method changes from reassigning the elements of ```arr``` using ```
 
 ## Part 2
 ```find``` command
+
 1. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)        
@@ -73,6 +74,7 @@ technical/plos
 
 ```
 This is finding all directories under a greater directory, ```technical```. It is useful because it will show us how many branches down from a main directory we can see. 
+
 2. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)        
@@ -86,8 +88,8 @@ technical/government/Media
 technical/government/Post_Rate_Comm
 ```
 This is showing the number of directories under one specific folder. This helps us narrow our searching if we are interested in only one folder. 
-3. 
 
+3. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)        
 $ find technical/biomed -type f -name "*.txt"
@@ -104,6 +106,7 @@ technical/biomed/1471-2091-2-16.txt
 .... (contd)
 ```
 This is showing the all files of a specific type, which is useful for searching and sorting within text files only. 
+
 4. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
@@ -117,7 +120,7 @@ nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
 $ find technical/911report -type f -exec grep -l 'BIRD' {} \;
 ```
 This is useful because we can try to search for paths to files that contain a specific pattern.
-We
+
 6. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
@@ -130,6 +133,7 @@ technical/biomed/1471-2180-3-10.txt
 
 ```
 The files containing the specific pattern (case-sensitive) are printed out onto the console. We can easily alter the directories we use this command for. 
+
 7. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
@@ -137,6 +141,7 @@ $ find technical/biomed  -maxdepth 1 -type f | wc -l
 837
 ```
 This is useful because it allows us to look at the total number of files in the biomed directory specifically. 
+
 8. 
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/docsearch (main)
