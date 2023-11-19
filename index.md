@@ -2,16 +2,20 @@ Lab Report 4
 
 ## Task 1 - logging into ieng6
 
+![Image](login.png)
+
 `<up>`
 I pressed <up> once because the command `ssh cs15lfa23sz@ieng6.ucsd.edu` was one up in my command history. 
 
 ## Task 2 - Cloning the forked repository
+![Image](cloning.png)
 
 `<up><up><up><up><up><up><up><up>`
 
 I pressed <up> eight times because the command `git clone git@github.com:nidafirdaws/lab7.git` was 8 up in my command history.
 
 ## Task 3 - Running the tests
+![Image](testsfailed.png)
 
 `cd lab7``bash test.sh`
 
@@ -29,8 +33,7 @@ I typed `bash test.sh` to run the newly saved `ListExamples.java` file.
 
 ## Task 6 - Committing and pushing 
 
-`<git commit -m "Fixed test"><git push>`
+`<git add ListExamples.java><git commit -m "Fixed test"><git push>`
 
-I typed a commit message and then pushed to the main branch of the forked repository to save the changes. 
+I typed `git add ListExamples.java`, then I typed a commit message with `git commit -m "Fixed test"` and then pushed to the main branch of the forked repository using `git push` save the changes. 
 
-I typed
