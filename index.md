@@ -143,29 +143,20 @@ $ bash test.sh
 Compilation successful. Running AverageTests...
 JUnit version 4.13.2
 .E.E.E
-Time: 0.015
+Time: 0.017
 There were 3 failures:
 1) testEmptyArray(AverageTests)
-java.lang.AssertionError: expected:<0.0> but was:<NaN>
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.failNotEquals(Assert.java:835)
-        at org.junit.Assert.assertEquals(Assert.java:555)
-        at org.junit.Assert.assertEquals(Assert.java:685)
-        at AverageTests.testEmptyArray(AverageTests.java:10)
+java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+        at AverageCalculator.calculateAverage(AverageCalculator.java:5)
+        at AverageTests.testEmptyArray(AverageTests.java:9)
 2) testArrayWithThreeDifferentValues(AverageTests)
-java.lang.AssertionError: expected:<20.0> but was:<0.0>
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.failNotEquals(Assert.java:835)
-        at org.junit.Assert.assertEquals(Assert.java:555)
-        at org.junit.Assert.assertEquals(Assert.java:685)
-        at AverageTests.testArrayWithThreeDifferentValues(AverageTests.java:24)
+java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3
+        at AverageCalculator.calculateAverage(AverageCalculator.java:5)
+        at AverageTests.testArrayWithThreeDifferentValues(AverageTests.java:23)
 3) testArrayWithOneValue(AverageTests)
-java.lang.AssertionError: expected:<5.0> but was:<0.0>
-        at org.junit.Assert.fail(Assert.java:89)
-        at org.junit.Assert.failNotEquals(Assert.java:835)
-        at org.junit.Assert.assertEquals(Assert.java:555)
-        at org.junit.Assert.assertEquals(Assert.java:685)
-        at AverageTests.testArrayWithOneValue(AverageTests.java:17)
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+        at AverageCalculator.calculateAverage(AverageCalculator.java:5)
+        at AverageTests.testArrayWithOneValue(AverageTests.java:16)
 
 FAILURES!!!
 Tests run: 3,  Failures: 3
