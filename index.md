@@ -1,43 +1,63 @@
-## Lab Report 4
+## Lab Report 5
+Below is a simulated conversation with a student and TA.
+## Issue with AverageCalculator.java
+_posted by Anonymous_
+I wrote a function to calculate the average of any integer array of numbers. The function is located inside of my file called ``AverageCalculator.java``. Here is a screenshot of the code and the code for the class below: 
+![Image](AverageCalculator.png)
+```
+public class AverageCalculator {
 
-## Task 1 - logging into ieng6
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30, 40, 50};
+        double result = calculateAverage(numbers);
+        System.out.println("Average: " + result);
+    }
 
-![Image](login.png)
+    public static double calculateAverage(int[] numbers) {
+        int sum = 0;
+        for (int i = 0; i <= numbers.length; i++) {  
+            sum += numbers[i];
+        }
+        return (double) sum / numbers.length;
+    }
+}
+```
+  Every time I run the file using my bash script, it tells me the compilation was successful, but there's an 
+  ArrayOutOfBounds error that I get when I run it. I tried running it with several different arrays, but it keeps 
+  giving me the same exception. I noticed that each time I try a different array, it gives me the same out of 
+  bounds error with the length of the array as out of bounds. 
 
-`<up>`
-I pressed <up> once because the command `ssh cs15lfa23sz@ieng6.ucsd.edu` was one up in my command history. 
+![Image](error.png)
+```
+nidaf@TABLET-0ECIG2SB MINGW64 ~/lab5
+$ bash test.sh
+Compilation successful. Running AverageCalculator...
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out of bounds for length 5
+        at AverageCalculator.calculateAverage(AverageCalculator.java:12)
+        at AverageCalculator.main(AverageCalculator.java:5)
+```
+I tried checking line 5, but I'm not sure where to look to fix the bug. Could you help me out? 
 
-## Task 2 - Cloning the forked repository
-![Image](cloning.png)
+##Reply to: Anonymous 
+posted by: TA Ben Programmer
+    Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
+    here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
+    happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
+    present there? 
 
-`<up><up><up><up><up><up><up><up>`
+##Reply to: Ben Programmer
+posted by Anonymous
 
-I pressed <up> eight times because the command `git clone git@github.com:nidafirdaws/lab7.git` was 8 up in my command history.
+My bash script is supposed to compile and run the ```AverageCalculator.java``` file. It currently looks like this:
+```
 
-## Task 3 - Running the tests
-![Image](testsfailed.png)
+javac AverageCalculator.java
 
-`<cd lab7><bash test.sh>`
-
-I typed `cd lab7` to change the directory to `lab7`. Then, I typed `bash test.sh` to run the tests, demonstrating that they fail. 
-
-## Task 4 - Fixing the vim file
-![Image](fixing.png)
-
-`<vim ListExamples.java><?index1><l><l><l><l><l><l><i><backspace><2><ESC><:wq!>`
-
-I typed the command `vim ListExamples.java` to open the ListExamples.java file in the vim editor, and then used `?index1` to find the last instance of `index1` in the `ListExamples.java` file. I then pressed `enter` to jump to the line, and pressed `<l>` 6 times to move to the digit 2. I then pressed `i` to enter insert mode and pressed `<backspace>` to delete the 1, typing a `2`. I then pressed `<ESC>` and typed `:wq!` to save the changes.
-
-## Task 5 - Rerunning the tests
-![Image](fixed.png)
-
-`bash test.sh`
-I typed `bash test.sh` to run the newly saved `ListExamples.java` file using the bash script. 
-
-## Task 6 - Committing and pushing 
-![Image](committing.png)
-
-`<git add ListExamples.java><git commit -m "Fixed test"><git push>`
-
-I typed `git add ListExamples.java` to add the changes to the file, then I typed a commit message with `git commit -m "Fixed test"` to commit the changes and  pushed to the main branch of the forked repository using `git push` save the changes. 
-
+if [ $? -eq 0 ]; then
+    echo "Compilation successful. Running AverageCalculator..."
+    java AverageCalculator
+else
+    echo "Compilation failed. 
+fi
+```
+The script successfully compiles the 
