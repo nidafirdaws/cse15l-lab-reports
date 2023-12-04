@@ -1,7 +1,7 @@
 ## Lab Report 5
 Below is a simulated conversation with a student and TA.
 ## Issue with AverageCalculator.java
-# _posted by Anonymous_
+### _posted by Anonymous_
 I wrote a function to calculate the average of any integer array of numbers. The function is located inside of my file called ``AverageCalculator.java``. Here is a screenshot of the code and the code for the class below: 
 ![Image](AverageCalculator.png)
 ```
@@ -39,14 +39,14 @@ Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out
 I tried checking line 5, but I'm not sure where to look to fix the bug. Could you help me out? 
 
 ## Reply to: Anonymous 
-# _posted by: TA Ben Programmer_
+### _posted by: TA Ben Programmer_
     Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
     here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
     happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
     present there? 
 
 ## Reply to: Ben Programmer
-# _posted by Anonymous_
+### _posted by Anonymous_
 
 My bash script is supposed to compile and run the ```AverageCalculator.java``` file. It currently looks like this:
 ```
@@ -63,7 +63,7 @@ fi
 The script successfully compiles the file, but it prints out the error message right afterward. I think that means my program is correct? 
 
 ## Reply to: TA Ben Programmer 
-# _posted by: Anonymous_
+### _posted by: Anonymous_
 
 Okay! Looking at the picture, can see that your bash script is meant to compile the file, then run it if compilation is successful. If compilation is 
 successful, it means that the compiler successfully found the file and was able to understand the code. The ```ArrayIndexOutOfBoundsException```
