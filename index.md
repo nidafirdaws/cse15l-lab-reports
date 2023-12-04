@@ -38,21 +38,21 @@ Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 5 out
 ```
 I tried checking line 5, but I'm not sure where to look to fix the bug. Could you help me out? 
 
-##Reply to: Anonymous 
-posted by: TA Ben Programmer
+## Reply to: Anonymous 
+_posted by: TA Ben Programmer_
     Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
     here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
     happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
     present there? 
 
-##Reply to: Ben Programmer
-posted by Anonymous
+## Reply to: Ben Programmer
+_posted by Anonymous_
 
 My bash script is supposed to compile and run the ```AverageCalculator.java``` file. It currently looks like this:
 ```
 
 javac AverageCalculator.java
-
+![Image](bash.png)
 if [ $? -eq 0 ]; then
     echo "Compilation successful. Running AverageCalculator..."
     java AverageCalculator
@@ -60,4 +60,16 @@ else
     echo "Compilation failed. 
 fi
 ```
-The script successfully compiles the 
+The script successfully compiles the file, but it prints out the error message right afterward. I think that means my program is correct? 
+
+## Reply to: TA Ben Programmer 
+_posted by: Anonymous_
+
+Okay! Looking at the picture, can see that your bash script is meant to compile the file, then run it if compilation is successful. If compilation is 
+successful, it means that the compiler successfully found the file and was able to understand the code. The ```ArrayIndexOutOfBoundsException```
+below  ```'Compilation successful``` shows that there is a bug within your program itself, given that it took in input from your main method. 
+I am going to make the following suggestions: 
+
+- Try creating a separate file to run your tests as JUnit. This will allow you to 
+
+
