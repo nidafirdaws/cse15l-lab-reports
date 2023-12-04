@@ -41,10 +41,10 @@ I tried checking line 5, but I'm not sure where to look to fix the bug. Could yo
 <br>
 ## Reply to: Anonymous 
 ### _posted by: TA Ben Programmer_
-    Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
-    here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
-    happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
-    present there? 
+Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
+here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
+happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
+present there? 
 
 ## Reply to: Ben Programmer
 ### _posted by Anonymous_
@@ -207,4 +207,8 @@ OK (3 tests)
 ## Reply to: Anonymous
 ### _posted by: TA Ben Programmer_
 Great! Keep adding to that tests file. 
+
+### Part 2
+Something I learned from my lab experiences this quarter was how to effectively minimize the number of keypresses required to do basic code editing via Vim. I didn't think I would ever have to utilize Vim to do anything except to move around files, but this lab experience taught me that timesavings is actually very valuable. I also learned how to collaboratively edit code on Github, and the reasoning behind adding, committing, and pushing. The tutors were very patient and helpful along the way, I look forward to using these skills in the future!
+
 
