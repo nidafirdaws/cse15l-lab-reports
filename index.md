@@ -23,10 +23,7 @@ public class AverageCalculator {
     }
 }
 ```
-  Every time I run the file using my bash script, it tells me the compilation was successful, but there's an 
-  ArrayOutOfBounds error that I get when I run it. I tried running it with several different arrays, but it keeps 
-  giving me the same exception. I noticed that each time I try a different array, it gives me the same out of 
-  bounds error with the length of the array as out of bounds. 
+Every time I run the file using my bash script, it tells me the compilation was successful, but there's an ArrayOutOfBounds error that I get when I run it. I tried running it with several different arrays, but it keeps giving me the same exception. I noticed that each time I try a different array, it gives me the same out of bounds error with the length of the array as out of bounds. 
 
 ![Image](error.png)
 ```
@@ -43,7 +40,7 @@ I tried checking line 5, but I'm not sure where to look to fix the bug. Could yo
 ### _posted by: TA Ben Programmer_
 Hello! I see you're having an issue with your ```AverageCalculator.java``` class. The failure inducing input 
 here seems to be the array you pass into your ```main``` method in the ```.java``` file. I can't see what's 
-happening in your bash script, could you explain what you need the bash script to do and what code iscurrently 
+happening in your bash script, could you explain what you need the bash script to do and what code is currently 
 present there? 
 
 ## Reply to: Ben Programmer
@@ -80,7 +77,16 @@ I hope this helps!
 ## Reply to: Ben Programmer
 ### _posted by Anonymous_
 
-Okay! I tried creating a separate JUnit file to run my tests on three different arrays: one that is empty (which should return 0.0), an array with just one value, and an array with 3 different values. I created a separate file within the same directory called ```lib```, and then I put in the two files we used for a previous project for the JUnit imports. My directory now looks like this: 
+Okay! I tried creating a separate JUnit file to run my tests on three different arrays: one that is empty (which should return 0.0), an array with just one value, and an array with 3 different values. I created a separate file within the same directory called ```lib```, and then I put in the two files we used for a previous project for the JUnit imports.
+
+My old directory looked like this: 
+```
+nidaf@TABLET-0ECIG2SB MINGW64 ~/lab5
+$ ls
+AverageCalculator.class  AverageCalculator.java  AverageTests.class  test.sh
+```
+
+My new directory now looks like this after adding the new files: 
 ![Image](newdirectory.png)
 ```
 nidaf@TABLET-0ECIG2SB MINGW64 ~/lab5
@@ -165,7 +171,7 @@ I can see that all three errors are very telling: they all say index out of boun
 ```
 for (int i = 0; i <= numbers.length; i++) 
 ```
-The equal sign means that I always access indexes 0-length of array inclusive instead of exclusive. So, I removed the ```=``` and added an if statement to return 0.0 if the length of the array is 0. 
+The equal sign means that I always access indexes 0-length of array inclusive instead of exclusive. So, I removed the ```=``` and added an if statement to return 0.0 if the length of the array is 0. This is the new ```AverageCalculator.java``` file. 
 ![Image](newAC.png)
 ```
 public class AverageCalculator {
@@ -198,6 +204,136 @@ OK (3 tests)
 ## Reply to: Anonymous
 ### _posted by: TA Ben Programmer_
 Great! Keep adding to that tests file. 
+
+## Info about setup
+File and directory structure needed:
+```
+AverageCalculator.class  AverageCalculator.java  AverageTests.class  AverageTests.java  lib/  test.sh
+```
+Inside ```lib```:
+```
+hamcrest-core-1.3.jar  junit-4.13.2.jar
+```
+Contents of ```AverageCalculator.java``` before:
+```
+public class AverageCalculator {
+
+    public static void main(String[] args) {
+        int[] numbers = {10, 20, 30, 40, 50};
+        double result = calculateAverage(numbers);
+        System.out.println("Average: " + result);
+    }
+
+    public static double calculateAverage(int[] numbers) {
+        int sum = 0;
+        for (int i = 0; i <= numbers.length; i++) {  
+            sum += numbers[i];
+        }
+        return (double) sum / numbers.length;
+    }
+}
+```
+Contents of ```AverageCalculator.java``` after:
+```
+public class AverageCalculator {
+    public static double calculateAverage(int[] numbers) {
+        double sum = 0;
+        for (int i = 0; i < numbers.length; i++) {  
+            sum += numbers[i];
+        }
+        if(numbers.length==0){
+            return 0.0;
+        }
+        return sum/numbers.length; 
+    }
+}
+```
+Contents of ```test.sh``` before: 
+```
+javac AverageCalculator.java
+if [ $? -eq 0 ]; then
+    echo "Compilation successful. Running AverageCalculator..."
+    java AverageCalculator
+else
+    echo "Compilation failed. 
+fi
+```
+Contents of ```test.sh``` after: 
+```
+javac AverageCalculator.java
+
+if [ $? -eq 0 ]; 
+then
+    echo "Compilation successful. Running AverageTests..."
+    javac -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" *.java
+    java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore AverageTests
+else
+        echo "Compilation failed."
+fi
+```
+Description of edits to to fix bug:
+In ```AverageCalculator.java```, remove the ```main``` method completely. In ```calculateAverage```, change ```sum``` to ```double``` and remove the ```=``` in the for loop condition ```i<=numbers.length```. Then, add a new if statement that returns an empty average if the array is empty:
+```
+ if(numbers.length==0){
+            return 0.0;
+        }
+```
+At the end, remove the type casting ```double``` and simply have ```return sum/numbers.length```. 
+
+For more thorough testing, create a new file called ```AverageTests.java```, add the necessary imports for ```JUnit``` and then write three tests to test the new ```AverageCalculator.java```. 
+```
+import static org.junit.Assert.*;
+import org.junit.*;
+
+public class AverageTests {
+
+    @Test
+    public void testEmptyArray() {
+        int[] numbers = {};
+        double result = AverageCalculator.calculateAverage(numbers);
+        assertEquals(0.0, result, 0.001);  
+    }
+
+    @Test
+    public void testArrayWithOneValue() {
+        int[] numbers = {5};
+        double result = AverageCalculator.calculateAverage(numbers);
+        assertEquals(5.0, result, 0.001);
+    }
+
+    @Test
+    public void testArrayWithThreeDifferentValues() {
+        int[] numbers = {10, 20, 30};
+        double result = AverageCalculator.calculateAverage(numbers);
+        assertEquals(20.0, result, 0.001);
+    }
+}
+```
+Change ```test.sh``` so it compiles ```AverageTests.java``` and then runs it with Windows commands for JUnit.
+```
+javac AverageCalculator.java
+
+if [ $? -eq 0 ]; 
+then
+    echo "Compilation successful. Running AverageTests..."
+    javac -cp ".;lib/hamcrest-core-1.3.jar;lib/junit-4.13.2.jar" *.java
+    java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore AverageTests
+else
+        echo "Compilation failed."
+fi
+```
+
+Then, run the fixes with ```bash test.sh``` in the terminal. 
+```
+nidaf@TABLET-0ECIG2SB MINGW64 ~/lab5
+$ bash test.sh
+Compilation successful. Running AverageTests...
+JUnit version 4.13.2
+...
+Time: 0.015
+
+OK (3 tests)
+```
 
 ### Part 2
 Something I learned from my lab experiences this quarter was how to effectively minimize the number of keypresses required to do basic code editing via Vim. I didn't think I would ever have to utilize Vim to do anything except to move around files, but this lab experience taught me that timesavings is actually very valuable. I also learned how to collaboratively edit code on Github, and the reasoning behind adding, committing, and pushing. The tutors were very patient and helpful along the way, I look forward to using these skills in the future!
